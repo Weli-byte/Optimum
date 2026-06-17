@@ -13,6 +13,13 @@ export const IMAGES = {
   community: u("1571902943202-507ec2618e8f"),
   lifestyle: u("1571019613454-1cb2f99b2d8b"),
 
+  // Secondary cinematic / people-training shots for the story chapters.
+  trainingAlt: u("1605296867304-46d5465a13f1"),
+  strengthAlt: u("1574680096145-d05b474e2155"),
+  recoveryAlt: u("1599058945522-28d584b6f0ff"),
+  communityAlt: u("1518611012118-696072aa579a"),
+  lifestyleAlt: u("1594381898411-846e7d193883"),
+
   gallery: [
     u("1534438327276-14e5300c3a48", 1200),
     u("1517836357463-d25dfeac3438", 1200),

@@ -11,6 +11,7 @@ type Chapter = {
   title: string;
   copy: string;
   image: string;
+  image2: string;
   align: "left" | "right";
 };
 
@@ -20,6 +21,7 @@ const CHAPTERS: Chapter[] = [
     title: "Training",
     copy: "Programmes engineered around you. Every session is intentional, measured and built to move you forward.",
     image: IMAGES.training,
+    image2: IMAGES.trainingAlt,
     align: "left",
   },
   {
@@ -27,6 +29,7 @@ const CHAPTERS: Chapter[] = [
     title: "Strength",
     copy: "Raw power, refined. World-class equipment and coaching that turns effort into undeniable results.",
     image: IMAGES.strength,
+    image2: IMAGES.strengthAlt,
     align: "right",
   },
   {
@@ -34,6 +37,7 @@ const CHAPTERS: Chapter[] = [
     title: "Recovery",
     copy: "Cryotherapy, contrast pools and guided mobility. Because elite performance is built in the rest.",
     image: IMAGES.recovery,
+    image2: IMAGES.recoveryAlt,
     align: "left",
   },
   {
@@ -41,6 +45,7 @@ const CHAPTERS: Chapter[] = [
     title: "Community",
     copy: "Surround yourself with people who refuse average. Energy is contagious — ours is relentless.",
     image: IMAGES.community,
+    image2: IMAGES.communityAlt,
     align: "right",
   },
   {
@@ -48,6 +53,7 @@ const CHAPTERS: Chapter[] = [
     title: "Lifestyle",
     copy: "More than a gym. A standard you carry into every part of your life. This is the OPTIMUM way.",
     image: IMAGES.lifestyle,
+    image2: IMAGES.lifestyleAlt,
     align: "left",
   },
 ];
@@ -126,6 +132,24 @@ function Panel({ chapter }: { chapter: Chapter }) {
           >
             {chapter.copy}
           </motion.p>
+
+          {/* Secondary cinematic image — fills the panel and adds depth */}
+          <motion.div
+            initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
+            whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.2, ease, delay: 0.25 }}
+            className="relative mt-10 aspect-[16/10] max-w-md overflow-hidden rounded-2xl"
+          >
+            <motion.img
+              src={chapter.image2}
+              alt={`${chapter.title} — in the club`}
+              loading="lazy"
+              style={{ y: imgY, scale: imgScale }}
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
+          </motion.div>
         </div>
       </div>
     </div>
