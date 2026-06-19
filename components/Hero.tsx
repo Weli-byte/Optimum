@@ -91,9 +91,9 @@ export default function Hero() {
       </motion.div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/20 to-ink" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-ink/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(5,5,5,0.85)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/75 via-ink/25 to-ink" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-transparent to-ink/45" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(5,5,5,0.78)_65%,rgba(5,5,5,0.92)_100%)]" />
 
       {/* Content */}
       <motion.div
