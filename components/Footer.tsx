@@ -66,11 +66,6 @@ const COLUMNS = [
         external: true,
         icon: "whatsapp",
       },
-      {
-        label: "Yol Tarifi",
-        href: "https://www.google.com/maps/search/?api=1&query=Optimum%20Fitness%20Club%20Elaz%C4%B1%C4%9F",
-        external: true,
-      },
     ],
   },
   {
@@ -153,17 +148,6 @@ export default function Footer() {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 py-8 text-xs text-white/40 sm:flex-row">
           <p>© {new Date().getFullYear()} Optimum Fitness Club. Tüm hakları saklıdır.</p>
-          <div className="flex gap-6">
-            <a href="tel:+905336888282" className="hover:text-white">
-              Ara
-            </a>
-            <a href="https://wa.me/905336888282" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              WhatsApp
-            </a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Optimum%20Fitness%20Club%20Elaz%C4%B1%C4%9F" target="_blank" rel="noopener noreferrer" className="hover:text-white">
-              Harita
-            </a>
-          </div>
         </div>
       </div>
 

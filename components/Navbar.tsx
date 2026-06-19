@@ -9,6 +9,11 @@ const LINKS = [
   { label: "Hakkında", href: "#story" },
   { label: "Galeri", href: "#gallery" },
   { label: "Üyelikler", href: "#membership" },
+  {
+    label: "Yol Tarifi",
+    href: "https://www.google.com/maps/search/?api=1&query=Optimum%20Fitness%20Club%20Elaz%C4%B1%C4%9F",
+    external: true,
+  },
 ];
 
 const MOBILE_PANEL_ID = "mobile-navigation";
@@ -61,6 +66,8 @@ export default function Navbar() {
             <li key={l.href}>
               <a
                 href={l.href}
+                target={"external" in l && l.external ? "_blank" : undefined}
+                rel={"external" in l && l.external ? "noopener noreferrer" : undefined}
                 className="group relative text-xs font-medium uppercase tracking-[0.18em] text-white/70 transition-colors hover:text-white"
               >
                 {l.label}
@@ -118,6 +125,8 @@ export default function Navbar() {
                   <li key={l.href}>
                     <a
                       href={l.href}
+                      target={"external" in l && l.external ? "_blank" : undefined}
+                      rel={"external" in l && l.external ? "noopener noreferrer" : undefined}
                       onClick={() => setOpen(false)}
                       className="block py-3 font-display text-3xl tracking-wide text-white/80 hover:text-gold"
                     >

@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const MAPS_HREF =
+  "https://www.google.com/maps/search/?api=1&query=Optimum%20Fitness%20Club%20Elaz%C4%B1%C4%9F";
+
 const PLANS = [
   {
     title: "1 AYLIK",
@@ -80,27 +83,43 @@ export default function Pricing() {
       className="relative w-full overflow-hidden bg-ink px-6 py-28 lg:px-20 lg:py-36"
     >
       <div className="mx-auto max-w-[1400px]">
-        <motion.span
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-6 block text-center text-xs uppercase tracking-[0.4em] text-gold"
-        >
-          Üyelik Planları
-        </motion.span>
+        <div className="relative">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-6 block text-center text-xs uppercase tracking-[0.4em] text-gold"
+          >
+            Üyelik Planları
+          </motion.span>
 
-        <motion.h2
-          initial={{ y: 40, opacity: 0, filter: "blur(12px)" }}
-          whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 1.1, ease }}
-          className="text-center font-display text-[10vw] leading-[0.9] tracking-tight text-white lg:text-[4.5vw]"
-        >
-          SANA UYGUN{" "}
-          <span className="text-gradient-gold animate-shimmer">PLANI</span>{" "}
-          SEÇ
-        </motion.h2>
+          <motion.h2
+            initial={{ y: 40, opacity: 0, filter: "blur(12px)" }}
+            whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 1.1, ease }}
+            className="text-center font-display text-[10vw] leading-[0.9] tracking-tight text-white lg:text-[4.5vw]"
+          >
+            SANA UYGUN{" "}
+            <span className="text-gradient-gold animate-shimmer">PLANI</span>{" "}
+            SEÇ
+          </motion.h2>
+
+          <motion.a
+            href={MAPS_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-cursor="hover"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink lg:absolute lg:right-0 lg:top-1/2 lg:mt-0 lg:-translate-y-1/2"
+          >
+            Yol Tarifi
+          </motion.a>
+        </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
           {PLANS.map((plan, i) => (
