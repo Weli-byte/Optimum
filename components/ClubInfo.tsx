@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Locations from "@/components/Locations";
 import {
   ADDRESS_DISPLAY,
   EMAIL_DISPLAY,
@@ -122,6 +123,8 @@ export default function ClubInfo() {
             </motion.div>
           ))}
         </div>
+
+        <Locations />
       </div>
     </section>
   );

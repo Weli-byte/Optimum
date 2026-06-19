@@ -8,7 +8,6 @@ import Stats from "@/components/Stats";
 import MembershipCTA from "@/components/MembershipCTA";
 import ClubInfo from "@/components/ClubInfo";
 import Footer from "@/components/Footer";
-import Locations from "@/components/Locations";
 
 export default function Home() {
   return (
@@ -23,7 +22,6 @@ export default function Home() {
       <MembershipCTA />
       <ClubInfo />
       <Footer />
-      <Locations />
     </main>
   );
 }
