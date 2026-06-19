@@ -27,7 +27,7 @@ const CHAPTERS: Chapter[] = [
     index: "01",
     eyebrow: "Salonun İçinde",
     title: "Optimum Antrenman Alanları",
-    copy: "Elazığ'da ağırlık ve ekipman çeşitliliğini aynı salonda buluşturan Optimum antrenman alanlarını ve topluluk atmosferini yakından keşfedin.",
+    copy: "Çoğu salonda alan daraldıkça motivasyon da düşer; Optimum'da bu sorunu hiç yaşamazsınız. 4.000 m²'yi bulan katımızda serbest ağırlıktan makinelere kadar her ekipmandan yeterince bulunur, en kalabalık saatte bile sırada beklemezsiniz. Şehirde bu büyüklükte bir antrenman alanına eşdeğer bulmak oldukça zordur.",
     images: [IMAGES.story.training],
     layout: "single",
     align: "left",
@@ -36,7 +36,7 @@ const CHAPTERS: Chapter[] = [
     index: "02",
     eyebrow: "Ayrı Alanlar",
     title: "Kadın ve Erkek Üyeler İçin",
-    copy: "Kadın üyeler için ayrılmış salon ve egzersiz alanlarıyla herkes kendi temposuna uygun antrenman düzenini kurabilir.",
+    copy: "Birçok salon kadınlara sadece küçük bir köşe ayırırken, Optimum kadın üyeleri için bağımsız ve tam donanımlı bir bölüm sunar; kimsenin bakışını hissetmeden kendi başınıza özgürce çalışırsınız. Erkek bölümünde ise güç antrenmanına adanmış geniş bir alan sizi bekler. Bu netlikte bir ayrım, şehirdeki spor salonları arasında nadiren rastlanan bir standarttır.",
     images: [
       IMAGES.story.womenMain,
       IMAGES.story.womenBalls,
@@ -49,7 +49,7 @@ const CHAPTERS: Chapter[] = [
     index: "03",
     eyebrow: "Ataşehir Şubesi",
     title: "Optimum Ataşehir",
-    copy: "Kardiyo, serbest ağırlık ve makine alanlarıyla Ataşehir şubesinden farklı antrenman bölümleri.",
+    copy: "Optimum'u 10 yıldır şehrin en büyük adresi yapan deneyim, şimdi Ataşehir'de yeni ve modern bir mekâna taşınıyor. 2.200 m² alanda kardiyo, serbest ağırlık ve makine bölümleri aynı çatı altında, ferah bir planla bir araya geliyor. Yeni açılan bir salonun belirsizliği yerine, kanıtlanmış bir kulübün güvencesiyle antrenmana başlarsınız.",
     images: [
       IMAGES.story.atasehirCardio,
       IMAGES.story.atasehirSalon,
@@ -171,7 +171,7 @@ function Panel({ chapter }: { chapter: Chapter }) {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 1, ease, delay: 0.15 }}
-            className="mt-6 max-w-md text-lg font-light leading-relaxed text-white/65"
+            className="mt-6 max-w-lg text-justify text-lg font-light leading-relaxed text-white/65 [text-align-last:left]"
           >
             {chapter.copy}
           </motion.p>

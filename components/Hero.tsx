@@ -29,7 +29,6 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [reduceMotionActive, setReduceMotionActive] = useState(false);
-  const [isVideoPaused, setIsVideoPaused] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -47,22 +46,7 @@ export default function Hero() {
     if (!reduceMotion || !videoRef.current) return;
 
     videoRef.current.pause();
-    setIsVideoPaused(true);
   }, [shouldReduceMotion]);
-
-  const toggleVideo = async () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (video.paused) {
-      await video.play();
-      setIsVideoPaused(false);
-      return;
-    }
-
-    video.pause();
-    setIsVideoPaused(true);
-  };
 
   return (
     <section
@@ -91,9 +75,9 @@ export default function Hero() {
       </motion.div>
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/75 via-ink/25 to-ink" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/75 via-transparent to-ink/45" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(5,5,5,0.78)_65%,rgba(5,5,5,0.92)_100%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/48 via-ink/14 to-ink/90" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/48 via-transparent to-ink/28" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(5,5,5,0.5)_65%,rgba(5,5,5,0.62)_100%)]" />
 
       {/* Content */}
       <motion.div
@@ -155,19 +139,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <button
-        type="button"
-        onClick={toggleVideo}
-        aria-pressed={isVideoPaused}
-        aria-label={
-          isVideoPaused
-            ? "Arka plan videosunu oynat"
-            : "Arka plan videosunu duraklat"
-        }
-        className="absolute bottom-24 right-6 z-20 rounded-full border border-white/20 bg-ink/60 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md transition-colors hover:border-gold hover:text-gold md:bottom-8 lg:right-10"
-      >
-        {isVideoPaused ? "Videoyu Oynat" : "Videoyu Duraklat"}
-      </button>
     </section>
   );
 }

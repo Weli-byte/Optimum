@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import PromoBar from "@/components/PromoBar";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -119,6 +120,10 @@ export default function Pricing() {
           >
             Yol Tarifi
           </motion.a>
+        </div>
+
+        <div className="mt-10">
+          <PromoBar />
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">

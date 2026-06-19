@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import PromoBar from "@/components/PromoBar";
 import ScrollStory from "@/components/ScrollStory";
 import Gallery from "@/components/Gallery";
 import MarqueeType from "@/components/MarqueeType";
@@ -21,7 +20,6 @@ export default function Home() {
       <ScrollStory />
       <MarqueeType />
       <Pricing />
-      <PromoBar />
       <MembershipCTA />
       <ClubInfo />
       <Footer />

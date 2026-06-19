@@ -26,7 +26,7 @@ export default function Gallery() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-6xl leading-none tracking-tight text-white lg:text-8xl"
         >
-          Kulübün <span className="text-gradient-gold">İçinde</span>
+          Galeri
         </motion.h2>
         <p className="mt-4 max-w-md text-white/55">
           Dambıldan kardiyoya, kadın ve erkek salonlarına uzanan

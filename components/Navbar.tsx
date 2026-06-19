@@ -49,7 +49,8 @@ export default function Navbar() {
             width={189}
             height={181}
             priority
-            className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            quality={100}
+            className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
           />
           <span className="hidden flex-col leading-none sm:flex">
             <span className="font-display text-2xl tracking-[0.18em]">

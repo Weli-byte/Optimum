@@ -10,32 +10,32 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const SERVICES = [
   {
     title: "Mentörlük",
-    desc: "Hedefinize göre program akışı, takip ve doğru egzersiz yönlendirmesi için ekibimiz yanınızda olur.",
+    desc: "Optimum'da antrenman tesadüfe bırakılmaz. Deneyimli ekibimiz, yıllardır binlerce üyeye eşlik ettiği bilgi birikimiyle size özel bir program kurar ve her seansta yanınızda olur. Bu, sıradan bir salonda bulamayacağınız gerçek bir rehberlik deneyimidir.",
     image: IMAGES.services.mentor,
   },
   {
     title: "Erkekler için Kalistenik",
-    desc: "Vücut ağırlığı, denge ve güç odaklı kalistenik alanıyla kontrollü ve atletik antrenman imkânı.",
+    desc: "Burası sadece ağırlık kaldırılan bir köşe değil, bedeninizle özgürce çalıştığınız bağımsız bir antrenman bölgesi. Barfiks istasyonlarından halka sistemlerine kadar geniş donanım, hareket özgürlüğünüzü hiçbir sınıra hapsetmez. Kendi vücut kontrolünüzü ustalaştırmak isteyenler için ayrılmış bu alan, Optimum'u farklı kılan detaylardan biri.",
     image: IMAGES.services.calisthenics,
   },
   {
     title: "Kadınlara Özel Fitness Salonu",
-    desc: "Kadın üyeler için ayrı tasarlanmış salonda kardiyo, ağırlık ve temel egzersiz alanları bir arada sunulur.",
+    desc: "Sadece kadın üyelere ayrılan bu bölüm, başka hiçbir gözün olmadığı bir mahremiyet sunar; antrenmanınıza tam konsantre olabilirsiniz. Geniş ve ferah tasarımı sayesinde kalabalık hissi yaşamaz, kendi hızınızda ilerlersiniz. Bu özel önem, şehirdeki çoğu spor salonunda bulamayacağınız bir ayrıcalıktır.",
     image: IMAGES.services.womenFitness,
   },
   {
     title: "Bol Kardiyo Alanı",
-    desc: "Kondisyon, yağ yakımı ve dayanıklılık hedefleri için farklı kardiyo ekipman seçenekleri.",
+    desc: "Tek sıra koşu bandıyla sınırlı kalmazsınız: geniş kardiyo katımızda aynı anda birçok farklı ekipmanı deneme özgürlüğüne sahip olursunuz. Ferah yerleşim planı, yoğun saatlerde bile sıkışmadan antrenman yapmanızı sağlar. Bu bolluk, dayanıklılığınızı geliştirirken sıkılmadan ilerlemenizin garantisidir.",
     image: IMAGES.services.cardio,
   },
   {
     title: "Alet Çeşitliliği",
-    desc: "Farklı kas gruplarına yönelik ekipman seçenekleriyle antrenman planınızı daha rahat çeşitlendirebilirsiniz.",
+    desc: "Optimum'un ekipman parkı, tek bir kas grubuna değil vücudunuzun tamamına hitap edecek şekilde planlandı. Bu çeşitlilik, antrenman programınızı yıllarca tekrar etmeden sürekli yenileyebilmenizin anahtarıdır. Profesyonel spor salonu kültürünü burada, elinizin altında bulursunuz.",
     image: IMAGES.services.equipment,
   },
   {
     title: "Ve Daha Fazlası",
-    desc: "Büyüyen Optimum deneyimi Ataşehir şubesiyle devam ediyor; yeni alanlar, yeni hedefler ve canlı bir topluluk.",
+    desc: "Optimum'un onlarca yıllık deneyimi artık Ataşehir'de de hayat buluyor. Aynı kurumsal güven, aynı profesyonel yaklaşım, yepyeni ve modern bir mekânda sizi bekliyor. Köklü bir kulübün parçası olmanın ayrıcalığını yeni şubemizde de yaşayabilirsiniz.",
     image: IMAGES.services.atasehir,
   },
 ];
@@ -110,10 +110,6 @@ export default function Services() {
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-end">
           <div>
-            <span className="mb-4 inline-flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-gold">
-              <span className="h-px w-10 bg-gold" />
-              OPTIMUM'DA
-            </span>
             <h2 className="font-display text-6xl leading-none tracking-tight text-white lg:text-8xl">
               Optimum'da Neler Var?
             </h2>
