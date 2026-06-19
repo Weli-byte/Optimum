@@ -77,7 +77,7 @@ function Card({
         }}
       />
       <div className="relative z-10 h-full rounded-2xl bg-carbon">
-        <div className="relative h-52 overflow-hidden rounded-t-2xl">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-t-2xl">
           <Image
             src={service.image}
             alt={service.title}
