@@ -4,20 +4,73 @@ import { motion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const FEATURES = [
-  "Kardiyo Alanı",
-  "Ağırlık Alanı",
-  "Kadın-Erkek Salonları",
-  "Grup Dersleri",
-  "Profesyonel Destek",
-];
-
 const PLANS = [
-  { title: "1 AYLIK", price: "1.999 ₺" },
-  { title: "3 AYLIK", price: "4.999 ₺" },
-  { title: "6 AYLIK", price: "8.999 ₺" },
-  { title: "9 AYLIK", price: "11.999 ₺" },
-  { title: "12 AYLIK", price: "14.999 ₺", featured: true },
+  {
+    title: "1 AYLIK",
+    price: "1.999 ₺",
+    subtitle: "Spora Başlamak İçin İdeal",
+    features: [
+      "Tüm Kardiyo Ekipmanlarına Erişim",
+      "Profesyonel Fitness Alanı Kullanımı",
+      "Kadın ve Erkeklere Özel Bölümler",
+      "Grup Derslerine Katılım",
+      "Kulüp Atmosferini Deneyimleme",
+    ],
+  },
+  {
+    title: "3 AYLIK",
+    price: "4.999 ₺",
+    subtitle: "Alışkanlık Kazanma Dönemi",
+    features: [
+      "Düzenli Antrenman Alışkanlığı",
+      "Tüm Kardiyo ve Ağırlık Alanları",
+      "Kadın ve Erkeklere Ayrı Salonlar",
+      "Grup Derslerine Katılım",
+      "Temel Antrenör Desteği",
+      "Kişisel Gelişim Takibi",
+    ],
+  },
+  {
+    title: "6 AYLIK",
+    price: "8.999 ₺",
+    subtitle: "Gözle Görülür Değişim",
+    features: [
+      "Vücut Gelişimini Takip Etme",
+      "Sınırsız Salon Kullanımı",
+      "Kardiyo ve Güç Antrenman Alanları",
+      "Grup Dersleri ve Etkinlikler",
+      "Antrenör Yönlendirmesi",
+      "Performans Gelişim Süreci",
+    ],
+  },
+  {
+    title: "9 AYLIK",
+    price: "11.999 ₺",
+    subtitle: "Performans ve Süreklilik",
+    features: [
+      "Uzun Vadeli Gelişim Süreci",
+      "Tüm Salon İmkanlarına Erişim",
+      "Geniş Kardiyo ve Ağırlık Alanı",
+      "Grup Dersleri ve Kulüp Avantajları",
+      "Sürekli Motivasyon Ortamı",
+      "Öncelikli Üye Avantajları",
+    ],
+  },
+  {
+    title: "12 AYLIK",
+    price: "14.999 ₺",
+    subtitle: "Maksimum Avantaj ve Tasarruf",
+    features: [
+      "12 Ay Kesintisiz Üyelik Avantajı",
+      "Sınırsız Kardiyo ve Fitness Kullanımı",
+      "Kadın-Erkek Özel Antrenman Alanları",
+      "Tüm Grup Derslerine Katılım",
+      "Optimum Fitness Öncelikli Destek",
+      "En Yüksek Tasarruf Avantajı",
+      "Kulüp Ayrıcalıklarına Tam Erişim",
+    ],
+    featured: true,
+  },
 ];
 
 export default function Pricing() {
@@ -91,11 +144,11 @@ export default function Pricing() {
                   plan.featured ? "text-ink/60" : "text-white/50"
                 }`}
               >
-                Spor salonu üyeliği
+                {plan.subtitle}
               </p>
 
               <ul className="mt-8 flex flex-col gap-3 text-sm">
-                {FEATURES.map((feature) => (
+                {plan.features.map((feature) => (
                   <li
                     key={feature}
                     className={`flex items-center gap-2 ${
