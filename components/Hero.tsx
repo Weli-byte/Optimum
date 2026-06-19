@@ -168,27 +168,6 @@ export default function Hero() {
       >
         {isVideoPaused ? "Videoyu Oynat" : "Videoyu Duraklat"}
       </button>
-
-      {/* Scroll indicator */}
-      <motion.div
-        style={reduceMotionActive ? undefined : { opacity }}
-        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
-      >
-        <span className="text-[10px] uppercase tracking-[0.3em] text-white/50">
-          Kaydır
-        </span>
-        <div className="relative flex h-12 w-7 justify-center rounded-full border border-white/30 p-1.5">
-          <motion.span
-            animate={
-              reduceMotionActive
-                ? { y: 0, opacity: 1 }
-                : { y: [0, 16, 0], opacity: [1, 0.2, 1] }
-            }
-            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="h-2 w-1 rounded-full bg-gold"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }
