@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { IMAGES } from "@/lib/assets";
 
@@ -8,34 +9,34 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 const SERVICES = [
   {
-    title: "Strength Training",
-    desc: "Olympic platforms, free weights and progressive overload coaching.",
-    image: IMAGES.strength,
+    title: "Mentörlük",
+    desc: "Hedefinize göre program akışı, takip ve doğru egzersiz yönlendirmesi için ekibimiz yanınızda olur.",
+    image: IMAGES.services.mentor,
   },
   {
-    title: "Functional Training",
-    desc: "Athletic movement, mobility and conditioning for real-world power.",
-    image: IMAGES.training,
+    title: "Erkekler için Kalistenik",
+    desc: "Vücut ağırlığı, denge ve güç odaklı kalistenik alanıyla kontrollü ve atletik antrenman imkânı.",
+    image: IMAGES.services.calisthenics,
   },
   {
-    title: "Personal Coaching",
-    desc: "One-to-one programming with elite coaches who know your name.",
-    image: IMAGES.community,
+    title: "Kadınlara Özel Fitness Salonu",
+    desc: "Kadın üyeler için ayrı tasarlanmış salonda kardiyo, ağırlık ve temel egzersiz alanları bir arada sunulur.",
+    image: IMAGES.services.womenFitness,
   },
   {
-    title: "Nutrition",
-    desc: "Performance nutrition plans built around your goals and biology.",
-    image: IMAGES.lifestyle,
+    title: "Bol Kardiyo Alanı",
+    desc: "Kondisyon, yağ yakımı ve dayanıklılık hedefleri için farklı kardiyo ekipman seçenekleri.",
+    image: IMAGES.services.cardio,
   },
   {
-    title: "Recovery",
-    desc: "Cryo, sauna, contrast pools and guided regeneration protocols.",
-    image: IMAGES.recovery,
+    title: "Alet Çeşitliliği",
+    desc: "Farklı kas gruplarına yönelik ekipman seçenekleriyle antrenman planınızı daha rahat çeşitlendirebilirsiniz.",
+    image: IMAGES.services.equipment,
   },
   {
-    title: "Group Classes",
-    desc: "High-energy studio sessions led by the city&apos;s best instructors.",
-    image: IMAGES.gallery[1],
+    title: "Ve Daha Fazlası",
+    desc: "Büyüyen Optimum deneyimi Ataşehir şubesiyle devam ediyor; yeni alanlar, yeni hedefler ve canlı bir topluluk.",
+    image: IMAGES.services.atasehir,
   },
 ];
 
@@ -77,10 +78,11 @@ function Card({
       />
       <div className="relative z-10 h-full rounded-2xl bg-carbon">
         <div className="relative h-52 overflow-hidden rounded-t-2xl">
-          <img
+          <Image
             src={service.image}
             alt={service.title}
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="h-full w-full object-cover brightness-75 transition-all duration-700 ease-luxe group-hover:scale-110 group-hover:brightness-100"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-carbon to-transparent" />
@@ -92,16 +94,9 @@ function Card({
           <h3 className="font-display text-3xl tracking-wide text-white transition-colors duration-500 group-hover:text-gold">
             {service.title}
           </h3>
-          <p
-            className="mt-3 text-sm leading-relaxed text-white/55"
-            dangerouslySetInnerHTML={{ __html: service.desc }}
-          />
-          <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-gold opacity-0 transition-all duration-500 group-hover:opacity-100">
-            Discover
-            <span className="transition-transform duration-500 group-hover:translate-x-1">
-              →
-            </span>
-          </span>
+          <p className="mt-3 text-sm leading-relaxed text-white/55">
+            {service.desc}
+          </p>
         </div>
       </div>
     </motion.div>
@@ -116,15 +111,15 @@ export default function Services() {
           <div>
             <span className="mb-4 inline-flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-gold">
               <span className="h-px w-10 bg-gold" />
-              What We Offer
+              OPTIMUM'DA
             </span>
             <h2 className="font-display text-6xl leading-none tracking-tight text-white lg:text-8xl">
-              The Experience
+              Optimum'da Neler Var?
             </h2>
           </div>
           <p className="max-w-sm text-white/55">
-            Six disciplines. One standard. Every service engineered to make the
-            extraordinary feel routine.
+            Elazığ'da Optimum Fitness Club; antrenman, mentörlük ve ekipman
+            çeşitliliğini aynı çatı altında toplar.
           </p>
         </div>
 

@@ -11,8 +11,10 @@
 }
 
 html {
+  position: relative;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  scroll-padding-top: 6rem;
 }
 
 html,
@@ -59,12 +61,18 @@ html.lenis body {
 
 @media (pointer: fine) {
   body {
-    cursor: none;
+    cursor: auto;
   }
   a,
   button {
-    cursor: none;
+    cursor: pointer;
   }
+}
+
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 0.5rem;
 }
 
 /* Utility: gradient text */

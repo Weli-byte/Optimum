@@ -13,19 +13,19 @@ type Row = {
 
 const ROWS: Row[] = [
   {
-    words: ["TRAIN", "RECOVER", "EVOLVE", "TRANSFORM", "DOMINATE"],
+    words: ["OPTIMUM", "ANTRENMAN", "KARDİYO", "GÜÇ", "MENTÖRLÜK"],
     baseX: 0,
     speed: -18,
     className: "text-white",
   },
   {
-    words: ["DISCIPLINE", "POWER", "FOCUS", "RELENTLESS", "ELITE"],
+    words: ["KALİSTENİK", "AĞIRLIK", "EKİPMAN", "TOPLULUK", "ELAZIĞ"],
     baseX: -20,
     speed: 22,
     className: "text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.25)]",
   },
   {
-    words: ["NO LIMITS", "NO EXCUSES", "NO AVERAGE", "OPTIMUM"],
+    words: ["KADINLARA ÖZEL", "ATAŞEHİR", "DAHA FAZLASI", "OPTIMUM"],
     baseX: -10,
     speed: -14,
     className: "text-gradient-gold",

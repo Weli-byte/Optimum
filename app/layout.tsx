@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import CursorGlow from "@/components/CursorGlow";
 import ScrollProgress from "@/components/ScrollProgress";
 import Navbar from "@/components/Navbar";
+import MobileContactBar from "@/components/MobileContactBar";
 
 const display = Bebas_Neue({
   weight: "400",
@@ -20,13 +21,18 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "OPTIMUM — Forge Your Next Version",
+  title: "Optimum Fitness Club | Elazığ",
   description:
-    "Elite training. Premium experience. No limits. A cinematic luxury fitness club.",
+    "Elazığ'da kadın ve erkek üyeler için ayrı antrenman alanları, kardiyo, ağırlık ve grup dersleri sunan Optimum Fitness Club.",
   openGraph: {
-    title: "OPTIMUM — Forge Your Next Version",
-    description: "Elite training. Premium experience. No limits.",
+    title: "Optimum Fitness Club | Elazığ",
+    description:
+      "Optimum Fitness Club Elazığ'da antrenman alanları, grup dersleri ve üyelik bilgileri.",
+    locale: "tr_TR",
     type: "website",
+  },
+  icons: {
+    icon: "/images/brand/optimum-fitness-club-logo.png",
   },
 };
 
@@ -42,13 +48,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable}`}>
+    <html lang="tr" className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans bg-ink text-white antialiased">
         <SmoothScroll />
         <ScrollProgress />
         <CursorGlow />
         <Navbar />
         {children}
+        <MobileContactBar />
       </body>
     </html>
   );

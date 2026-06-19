@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { IMAGES, VIDEOS } from "@/lib/assets";
+import { WHATSAPP_HREF } from "@/lib/contact";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -25,6 +26,10 @@ const rise = {
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [reduceMotionActive, setReduceMotionActive] = useState(false);
+  const [isVideoPaused, setIsVideoPaused] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -35,6 +40,30 @@ export default function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -120]);
 
+  useEffect(() => {
+    const reduceMotion = Boolean(shouldReduceMotion);
+    setReduceMotionActive(reduceMotion);
+
+    if (!reduceMotion || !videoRef.current) return;
+
+    videoRef.current.pause();
+    setIsVideoPaused(true);
+  }, [shouldReduceMotion]);
+
+  const toggleVideo = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (video.paused) {
+      await video.play();
+      setIsVideoPaused(false);
+      return;
+    }
+
+    video.pause();
+    setIsVideoPaused(true);
+  };
+
   return (
     <section
       id="top"
@@ -42,8 +71,12 @@ export default function Hero() {
       className="relative h-[100svh] w-full overflow-hidden"
     >
       {/* Background media */}
-      <motion.div style={{ scale, y }} className="absolute inset-0">
+      <motion.div
+        style={reduceMotionActive ? undefined : { scale, y }}
+        className="absolute inset-0"
+      >
         <video
+          ref={videoRef}
           className="h-full w-full object-cover"
           autoPlay
           muted
@@ -64,26 +97,30 @@ export default function Hero() {
 
       {/* Content */}
       <motion.div
-        style={{ y: textY, opacity }}
+        style={reduceMotionActive ? undefined : { y: textY, opacity }}
         className="relative z-10 flex h-full flex-col justify-center px-6 lg:px-20"
       >
-        <motion.div variants={container} initial="hidden" animate="show">
+        <motion.div
+          variants={container}
+          initial={reduceMotionActive ? "show" : "hidden"}
+          animate="show"
+        >
           <motion.div
             variants={rise}
             className="mb-6 flex items-center gap-4 text-xs uppercase tracking-[0.4em] text-gold"
           >
             <span className="h-px w-12 bg-gold" />
-            Premium Fitness Club
+            Optimum Fitness Club · Elazığ 1982
           </motion.div>
 
           <motion.h1
             variants={rise}
             className="max-w-5xl font-display text-[15vw] leading-[0.85] tracking-tight text-white sm:text-[12vw] lg:text-[9.5vw]"
           >
-            FORGE YOUR
+            GÜCÜNÜ
             <br />
             <span className="text-gradient-gold animate-shimmer">
-              NEXT VERSION
+              KEŞFET
             </span>
           </motion.h1>
 
@@ -91,8 +128,8 @@ export default function Hero() {
             variants={rise}
             className="mt-8 max-w-xl text-base font-light leading-relaxed text-white/75 lg:text-lg"
           >
-            Elite Training. Premium Experience.{" "}
-            <span className="text-white">No Limits.</span>
+            Kadın ve erkek üyeler için ayrı antrenman alanları; kardiyo,
+            ağırlık, grup dersleri ve Ataşehir şubesiyle Optimum deneyimi.
           </motion.p>
 
           <motion.div variants={rise} className="mt-12 flex flex-wrap gap-4">
@@ -100,14 +137,16 @@ export default function Hero() {
               href="#membership"
               className="group relative overflow-hidden rounded-full bg-gold px-9 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-ink"
             >
-              <span className="relative z-10">Start Your Journey</span>
+              <span className="relative z-10">Üyelikleri İncele</span>
               <span className="absolute inset-0 -translate-x-full bg-white transition-transform duration-500 ease-luxe group-hover:translate-x-0" />
             </a>
             <a
-              href="#story"
+              href={WHATSAPP_HREF}
               className="group flex items-center gap-3 rounded-full border border-white/20 px-9 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors duration-500 hover:border-gold hover:text-gold"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Explore The Club
+              WhatsApp ile İletişim
               <span className="transition-transform duration-500 group-hover:translate-x-1">
                 →
               </span>
@@ -116,17 +155,35 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
+      <button
+        type="button"
+        onClick={toggleVideo}
+        aria-pressed={isVideoPaused}
+        aria-label={
+          isVideoPaused
+            ? "Arka plan videosunu oynat"
+            : "Arka plan videosunu duraklat"
+        }
+        className="absolute bottom-24 right-6 z-20 rounded-full border border-white/20 bg-ink/60 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white backdrop-blur-md transition-colors hover:border-gold hover:text-gold md:bottom-8 lg:right-10"
+      >
+        {isVideoPaused ? "Videoyu Oynat" : "Videoyu Duraklat"}
+      </button>
+
       {/* Scroll indicator */}
       <motion.div
-        style={{ opacity }}
+        style={reduceMotionActive ? undefined : { opacity }}
         className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-white/50">
-          Scroll
+          Kaydır
         </span>
         <div className="relative flex h-12 w-7 justify-center rounded-full border border-white/30 p-1.5">
           <motion.span
-            animate={{ y: [0, 16, 0], opacity: [1, 0.2, 1] }}
+            animate={
+              reduceMotionActive
+                ? { y: 0, opacity: 1 }
+                : { y: [0, 16, 0], opacity: [1, 0.2, 1] }
+            }
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
             className="h-2 w-1 rounded-full bg-gold"
           />

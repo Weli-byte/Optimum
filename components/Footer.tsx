@@ -1,23 +1,47 @@
-"use client";
-
 const COLUMNS = [
   {
-    title: "Club",
-    links: ["The Story", "Membership", "Coaches", "Careers"],
+    title: "Kulüp",
+    links: [
+      { label: "Hakkında", href: "#story" },
+      { label: "Üyelikler", href: "#membership" },
+      { label: "Galeri", href: "#gallery" },
+    ],
   },
   {
-    title: "Train",
-    links: ["Strength", "Functional", "Recovery", "Classes"],
+    title: "İletişim",
+    links: [
+      { label: "0533 688 82 82", href: "tel:+905336888282" },
+      { label: "WhatsApp", href: "https://wa.me/905336888282", external: true },
+      {
+        label: "Yol Tarifi",
+        href: "https://www.google.com/maps/search/?api=1&query=Optimum%20Fitness%20Club%20Elaz%C4%B1%C4%9F",
+        external: true,
+      },
+    ],
   },
   {
-    title: "Connect",
-    links: ["Instagram", "TikTok", "YouTube", "LinkedIn"],
+    title: "Sosyal",
+    links: [
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/optimum_fitness_elazig/",
+        external: true,
+      },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/optimumfitnessclub",
+        external: true,
+      },
+    ],
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/5 bg-ink pt-20">
+    <footer
+      id="contact"
+      className="relative overflow-hidden border-t border-white/5 bg-ink pb-20 pt-20 md:pb-0"
+    >
       <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
@@ -28,14 +52,16 @@ export default function Footer() {
               OPTIMUM<span className="text-gold">.</span>
             </a>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
-              A cinematic luxury fitness club. Elite training, premium recovery
-              and a community that refuses average.
+              Optimum Fitness Club · Elazığ 1982. Spor salonu, grup dersleri ve
+              üyelik bilgileri için bize ulaşın.
             </p>
             <a
-              href="#membership"
+              href="https://wa.me/905336888282"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-7 inline-flex items-center gap-2 rounded-full border border-gold/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink"
             >
-              Book A Free Trial
+              WhatsApp'tan Yaz
             </a>
           </div>
 
@@ -46,14 +72,16 @@ export default function Footer() {
               </h4>
               <ul className="space-y-3">
                 {col.links.map((link) => (
-                  <li key={link}>
+                  <li key={link.href}>
                     <a
-                      href="#"
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
                       data-cursor="hover"
                       className="group inline-flex items-center text-sm text-white/70 transition-colors hover:text-gold"
                     >
                       <span className="mr-0 h-px w-0 bg-gold transition-all duration-500 ease-luxe group-hover:mr-2 group-hover:w-4" />
-                      {link}
+                      {link.label}
                     </a>
                   </li>
                 ))}
@@ -63,16 +91,16 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 py-8 text-xs text-white/40 sm:flex-row">
-          <p>© {new Date().getFullYear()} OPTIMUM Fitness Club. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Optimum Fitness Club. Tüm hakları saklıdır.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white">
-              Privacy
+            <a href="tel:+905336888282" className="hover:text-white">
+              Ara
             </a>
-            <a href="#" className="hover:text-white">
-              Terms
+            <a href="https://wa.me/905336888282" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              WhatsApp
             </a>
-            <a href="#" className="hover:text-white">
-              Cookies
+            <a href="https://www.google.com/maps/search/?api=1&query=Optimum%20Fitness%20Club%20Elaz%C4%B1%C4%9F" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+              Harita
             </a>
           </div>
         </div>

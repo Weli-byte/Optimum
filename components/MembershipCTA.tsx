@@ -1,8 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { IMAGES, VIDEOS } from "@/lib/assets";
+import { IMAGES } from "@/lib/assets";
+import { WHATSAPP_HREF } from "@/lib/contact";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -21,16 +23,13 @@ export default function MembershipCTA() {
       className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden"
     >
       <motion.div style={{ scale }} className="absolute inset-0">
-        <video
-          className="h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={IMAGES.membershipPoster}
-        >
-          <source src={VIDEOS.cta} type="video/mp4" />
-        </video>
+        <Image
+          src={IMAGES.services.atasehir}
+          alt="Optimum Fitness Club Ataşehir şubesi"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
       </motion.div>
 
       <div className="absolute inset-0 bg-ink/70" />
@@ -44,7 +43,7 @@ export default function MembershipCTA() {
           transition={{ duration: 0.8 }}
           className="mb-6 inline-block text-xs uppercase tracking-[0.4em] text-gold"
         >
-          Limited Founding Memberships
+          Üyelik Bilgisi
         </motion.span>
 
         <motion.h2
@@ -54,9 +53,9 @@ export default function MembershipCTA() {
           transition={{ duration: 1.1, ease }}
           className="font-display text-[14vw] leading-[0.85] tracking-tight text-white lg:text-[9vw]"
         >
-          READY TO
+          ANTRENMANA
           <br />
-          <span className="text-gradient-gold animate-shimmer">TRANSFORM?</span>
+          <span className="text-gradient-gold animate-shimmer">BAŞLA</span>
         </motion.h2>
 
         <motion.p
@@ -66,8 +65,8 @@ export default function MembershipCTA() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="mx-auto mt-8 max-w-lg text-lg font-light text-white/70"
         >
-          Your first session is on us. Step inside and feel the difference a
-          standard makes.
+          Üyelik seçenekleri, ders saatleri ve kulüp detayları için Optimum
+          Fitness Club ekibiyle doğrudan iletişime geçin.
         </motion.p>
 
         <motion.div
@@ -78,12 +77,14 @@ export default function MembershipCTA() {
           className="mt-12"
         >
           <a
-            href="#top"
+            href={WHATSAPP_HREF}
             data-cursor="hover"
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative inline-flex overflow-hidden rounded-full bg-gold px-12 py-5 text-sm font-semibold uppercase tracking-[0.2em] text-ink"
           >
             <span className="relative z-10 flex items-center gap-3">
-              Book A Free Trial
+              WhatsApp'tan Bilgi Al
               <span className="transition-transform duration-500 group-hover:translate-x-1">
                 →
               </span>

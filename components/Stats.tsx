@@ -1,41 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import {
-  motion,
-  useInView,
-  animate,
-} from "framer-motion";
+import { motion } from "framer-motion";
 
 const STATS = [
-  { value: 5000, suffix: "+", label: "Members" },
-  { value: 50, suffix: "+", label: "Weekly Classes" },
-  { value: 20, suffix: "+", label: "Elite Coaches" },
-  { value: 10000, suffix: "+", label: "Transformations" },
+  { value: "Ayrı", label: "Kadın ve erkek antrenman alanları" },
+  { value: "Kardiyo", label: "Kardiyo ve ağırlık ekipmanları" },
+  { value: "Grup", label: "Ders ve hareket odaklı programlar" },
+  { value: "Ataşehir", label: "Optimum'un yeni şubesi" },
 ];
-
-function Counter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, value, {
-      duration: 2.2,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setDisplay(Math.floor(v)),
-    });
-    return () => controls.stop();
-  }, [inView, value]);
-
-  return (
-    <span ref={ref}>
-      {display.toLocaleString()}
-      <span className="text-gold">{suffix}</span>
-    </span>
-  );
-}
 
 export default function Stats() {
   return (
@@ -52,7 +24,7 @@ export default function Stats() {
             className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             <span className="font-display text-6xl tracking-tight text-white lg:text-8xl">
-              <Counter value={s.value} suffix={s.suffix} />
+              {s.value}
             </span>
             <span className="mt-3 text-xs uppercase tracking-[0.25em] text-white/50">
               {s.label}

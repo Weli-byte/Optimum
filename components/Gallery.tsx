@@ -1,10 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { IMAGES } from "@/lib/assets";
 
-const LABELS = ["Strength Floor", "Studio", "Boxing", "Pool & Spa", "Lounge"];
+const LABELS = [
+  "Dambıl Alanı",
+  "Kadınlara Özel Egzersiz Alanı",
+  "Erkek Salonu",
+  "Kadın Salonu",
+  "Kardiyo Alanı",
+];
 
 export default function Gallery() {
   const [active, setActive] = useState<number | null>(null);
@@ -19,10 +26,11 @@ export default function Gallery() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-6xl leading-none tracking-tight text-white lg:text-8xl"
         >
-          Inside The <span className="text-gradient-gold">Club</span>
+          Kulübün <span className="text-gradient-gold">İçinde</span>
         </motion.h2>
         <p className="mt-4 max-w-md text-white/55">
-          A space designed like a private members&apos; club — not a gym.
+          Dambıldan kardiyoya, kadın ve erkek salonlarına uzanan
+          OPTIMUM deneyimi.
         </p>
       </div>
 
@@ -34,17 +42,25 @@ export default function Gallery() {
           const isActive = active === i;
           const dimmed = active !== null && !isActive;
           return (
-            <motion.div
-              key={i}
+            <motion.button
+              key={src}
+              type="button"
+              tabIndex={0}
+              aria-label={`${LABELS[i]} görselini büyüt`}
+              aria-pressed={isActive}
               data-cursor="hover"
               onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              onBlur={() => setActive(null)}
+              onClick={() => setActive(isActive ? null : i)}
               className="group relative h-full flex-1 overflow-hidden rounded-xl transition-[flex] duration-[600ms] ease-luxe"
               style={{ flexGrow: isActive ? 2.4 : 1 }}
             >
-              <img
+              <Image
                 src={src}
                 alt={LABELS[i]}
-                loading="lazy"
+                fill
+                sizes="(max-width: 768px) 40vw, 20vw"
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-[600ms] ease-luxe"
                 style={{
                   transform: isActive ? "scale(1.05)" : "scale(1)",
@@ -58,13 +74,13 @@ export default function Gallery() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
 
-              {/* vertical label */}
+              {/* gallery label */}
               <div className="absolute bottom-6 left-6 right-6">
                 <span
                   className={`block font-display text-2xl tracking-wide text-white transition-all duration-500 ${
                     isActive
                       ? "translate-y-0 opacity-100"
-                      : "translate-y-2 opacity-0 group-hover:opacity-100"
+                      : "translate-y-0 opacity-100 md:translate-y-2 md:opacity-0 md:group-hover:opacity-100 md:group-focus:opacity-100"
                   }`}
                 >
                   {LABELS[i]}
@@ -75,7 +91,7 @@ export default function Gallery() {
                   }`}
                 />
               </div>
-            </motion.div>
+            </motion.button>
           );
         })}
       </div>

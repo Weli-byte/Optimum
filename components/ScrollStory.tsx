@@ -1,62 +1,124 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import {
+  motion,
+  type MotionValue,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import { IMAGES } from "@/lib/assets";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 type Chapter = {
   index: string;
+  eyebrow: string;
   title: string;
   copy: string;
-  image: string;
-  image2: string;
+  images: string[];
+  layout: "single" | "triptych";
   align: "left" | "right";
 };
 
 const CHAPTERS: Chapter[] = [
   {
     index: "01",
-    title: "Training",
-    copy: "Programmes engineered around you. Every session is intentional, measured and built to move you forward.",
-    image: IMAGES.training,
-    image2: IMAGES.trainingAlt,
+    eyebrow: "Salonun İçinde",
+    title: "Optimum Antrenman Alanları",
+    copy: "Elazığ'da ağırlık ve ekipman çeşitliliğini aynı salonda buluşturan Optimum antrenman alanlarını ve topluluk atmosferini yakından keşfedin.",
+    images: [IMAGES.story.training],
+    layout: "single",
     align: "left",
   },
   {
     index: "02",
-    title: "Strength",
-    copy: "Raw power, refined. World-class equipment and coaching that turns effort into undeniable results.",
-    image: IMAGES.strength,
-    image2: IMAGES.strengthAlt,
+    eyebrow: "Ayrı Alanlar",
+    title: "Kadın ve Erkek Üyeler İçin",
+    copy: "Kadın üyeler için ayrılmış salon ve egzersiz alanlarıyla herkes kendi temposuna uygun antrenman düzenini kurabilir.",
+    images: [
+      IMAGES.story.womenMain,
+      IMAGES.story.womenBalls,
+      IMAGES.story.womenEntrance,
+    ],
+    layout: "triptych",
     align: "right",
   },
   {
     index: "03",
-    title: "Recovery",
-    copy: "Cryotherapy, contrast pools and guided mobility. Because elite performance is built in the rest.",
-    image: IMAGES.recovery,
-    image2: IMAGES.recoveryAlt,
-    align: "left",
-  },
-  {
-    index: "04",
-    title: "Community",
-    copy: "Surround yourself with people who refuse average. Energy is contagious — ours is relentless.",
-    image: IMAGES.community,
-    image2: IMAGES.communityAlt,
-    align: "right",
-  },
-  {
-    index: "05",
-    title: "Lifestyle",
-    copy: "More than a gym. A standard you carry into every part of your life. This is the OPTIMUM way.",
-    image: IMAGES.lifestyle,
-    image2: IMAGES.lifestyleAlt,
+    eyebrow: "Ataşehir Şubesi",
+    title: "Optimum Ataşehir",
+    copy: "Kardiyo, serbest ağırlık ve makine alanlarıyla Ataşehir şubesinden farklı antrenman bölümleri.",
+    images: [
+      IMAGES.story.atasehirCardio,
+      IMAGES.story.atasehirSalon,
+      IMAGES.story.atasehirSalon2,
+    ],
+    layout: "triptych",
     align: "left",
   },
 ];
+
+function StoryMedia({
+  chapter,
+  y,
+  scale,
+}: {
+  chapter: Chapter;
+  y: MotionValue<string>;
+  scale: MotionValue<number>;
+}) {
+  const isSingle = chapter.layout === "single";
+
+  return (
+    <div
+      className={
+        isSingle
+          ? "relative aspect-[16/10] overflow-hidden rounded-2xl [direction:ltr]"
+          : "grid h-[560px] grid-cols-[1.55fr_1fr] grid-rows-2 gap-3 [direction:ltr] sm:h-[680px]"
+      }
+    >
+      {chapter.images.map((image, imageIndex) => (
+        <div
+          key={image}
+          className={
+            isSingle
+              ? "relative h-full overflow-hidden rounded-2xl"
+              : imageIndex === 0
+                ? "relative row-span-2 overflow-hidden rounded-2xl"
+                : "relative overflow-hidden rounded-2xl"
+          }
+        >
+          <motion.div
+            style={{ y, scale }}
+            className="absolute -inset-y-[12%] inset-x-0"
+          >
+            <Image
+              src={image}
+              alt={`${chapter.title} ${imageIndex + 1}`}
+              fill
+              loading="eager"
+              sizes={
+                isSingle
+                  ? "(max-width: 1024px) 100vw, 50vw"
+                  : imageIndex === 0
+                    ? "(max-width: 1024px) 60vw, 32vw"
+                    : "(max-width: 1024px) 40vw, 20vw"
+              }
+              className="object-cover"
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" />
+        </div>
+      ))}
+
+      <span className="pointer-events-none absolute left-6 top-6 z-10 font-display text-7xl text-white/20">
+        {chapter.index}
+      </span>
+    </div>
+  );
+}
 
 function Panel({ chapter }: { chapter: Chapter }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -65,8 +127,8 @@ function Panel({ chapter }: { chapter: Chapter }) {
     offset: ["start end", "end start"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
-  const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1, 1.15]);
+  const imgY = useTransform(scrollYProgress, [0, 1], ["-7%", "7%"]);
+  const imgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1, 1.08]);
   const isRight = chapter.align === "right";
 
   return (
@@ -75,32 +137,12 @@ function Panel({ chapter }: { chapter: Chapter }) {
       className="relative flex min-h-[100svh] items-center px-6 py-24 lg:px-20"
     >
       <div
-        className={`mx-auto grid w-full max-w-[1400px] items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
+        className={`mx-auto grid w-full max-w-[1400px] items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20 ${
           isRight ? "lg:[direction:rtl]" : ""
         }`}
       >
-        {/* Image with parallax + reveal mask */}
-        <motion.div
-          initial={{ clipPath: "inset(100% 0 0 0)" }}
-          whileInView={{ clipPath: "inset(0% 0 0 0)" }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 1.2, ease }}
-          className="relative aspect-[4/5] overflow-hidden rounded-2xl [direction:ltr]"
-        >
-          <motion.img
-            src={chapter.image}
-            alt={chapter.title}
-            loading="lazy"
-            style={{ y: imgY, scale: imgScale }}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
-          <span className="absolute left-6 top-6 font-display text-7xl text-white/15">
-            {chapter.index}
-          </span>
-        </motion.div>
+        <StoryMedia chapter={chapter} y={imgY} scale={imgScale} />
 
-        {/* Copy */}
         <div className="[direction:ltr]">
           <motion.span
             initial={{ opacity: 0 }}
@@ -110,7 +152,7 @@ function Panel({ chapter }: { chapter: Chapter }) {
             className="mb-5 inline-flex items-center gap-3 text-xs uppercase tracking-[0.35em] text-gold"
           >
             <span className="h-px w-10 bg-gold" />
-            Chapter {chapter.index}
+            {chapter.eyebrow}
           </motion.span>
 
           <motion.h2
@@ -118,7 +160,7 @@ function Panel({ chapter }: { chapter: Chapter }) {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 1, ease }}
-            className="font-display text-[18vw] leading-[0.85] tracking-tight text-white sm:text-[12vw] lg:text-[7vw]"
+            className="font-display text-[15vw] leading-[0.85] tracking-tight text-white sm:text-[10vw] lg:text-[5.5vw]"
           >
             {chapter.title}
           </motion.h2>
@@ -132,24 +174,6 @@ function Panel({ chapter }: { chapter: Chapter }) {
           >
             {chapter.copy}
           </motion.p>
-
-          {/* Secondary cinematic image — fills the panel and adds depth */}
-          <motion.div
-            initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
-            whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.2, ease, delay: 0.25 }}
-            className="relative mt-10 aspect-[16/10] max-w-md overflow-hidden rounded-2xl"
-          >
-            <motion.img
-              src={chapter.image2}
-              alt={`${chapter.title} — in the club`}
-              loading="lazy"
-              style={{ y: imgY, scale: imgScale }}
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
-          </motion.div>
         </div>
       </div>
     </div>
@@ -159,8 +183,8 @@ function Panel({ chapter }: { chapter: Chapter }) {
 export default function ScrollStory() {
   return (
     <section id="story" className="relative bg-ink">
-      {CHAPTERS.map((c) => (
-        <Panel key={c.index} chapter={c} />
+      {CHAPTERS.map((chapter) => (
+        <Panel key={chapter.index} chapter={chapter} />
       ))}
     </section>
   );

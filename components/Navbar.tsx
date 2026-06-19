@@ -1,15 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { IMAGES } from "@/lib/assets";
 
 const LINKS = [
-  { label: "Story", href: "#story" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Services", href: "#services" },
-  { label: "Club", href: "#club" },
-  { label: "Members", href: "#testimonials" },
+  { label: "Hakkında", href: "#story" },
+  { label: "Galeri", href: "#gallery" },
+  { label: "Üyelikler", href: "#membership" },
 ];
+
+const MOBILE_PANEL_ID = "mobile-navigation";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,11 +35,24 @@ export default function Navbar() {
       <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-10">
         <a
           href="#top"
-          className="group flex items-baseline gap-1 font-display text-2xl tracking-[0.2em] text-white"
+          className="group flex items-center gap-3 text-white"
+          aria-label="Optimum Fitness Club - Elazığ 1982"
         >
-          OPTIMUM
-          <span className="text-gold transition-transform duration-500 group-hover:translate-x-1">
-            .
+          <Image
+            src={IMAGES.logo}
+            alt="Optimum Fitness Club logosu"
+            width={189}
+            height={181}
+            priority
+            className="h-12 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+          />
+          <span className="hidden flex-col leading-none sm:flex">
+            <span className="font-display text-2xl tracking-[0.18em]">
+              Optimum Fitness Club
+            </span>
+            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.28em] text-gold">
+              Elazığ 1982
+            </span>
           </span>
         </a>
 
@@ -56,16 +71,18 @@ export default function Navbar() {
         </ul>
 
         <a
-          href="#membership"
+          href="#contact"
           className="hidden overflow-hidden rounded-full border border-gold/40 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink md:inline-block"
         >
-          Join Now
+          İletişim
         </a>
 
         <button
           onClick={() => setOpen((v) => !v)}
           className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
-          aria-label="Toggle menu"
+          aria-label="Menüyü aç/kapat"
+          aria-expanded={open}
+          aria-controls={MOBILE_PANEL_ID}
         >
           <span
             className={`h-px w-6 bg-white transition-all duration-300 ${
@@ -88,6 +105,7 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id={MOBILE_PANEL_ID}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -95,7 +113,7 @@ export default function Navbar() {
             className="overflow-hidden md:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 py-6">
-              {LINKS.concat({ label: "Join Now", href: "#membership" }).map(
+              {LINKS.concat({ label: "İletişim", href: "#contact" }).map(
                 (l) => (
                   <li key={l.href}>
                     <a

@@ -1,12 +1,13 @@
 // Centralized media references.
-// Images use Unsplash direct CDN URLs (premium fitness / lifestyle).
-// Swap any URL for a local /public asset when you have brand photography.
+// Stock URLs are kept only as temporary non-club fallbacks.
+// Real Optimum club/story/service imagery should come from /public/images.
 
 const u = (id: string, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 export const IMAGES = {
-  heroPoster: u("1534438327276-14e5300c3a48", 2000),
+  logo: "/images/brand/optimum-fitness-club-logo.png",
+  heroPoster: "/images/gallery/dumbell-1.png",
   training: u("1599058917212-d750089bc07e"),
   strength: u("1581009146145-b5ef050c2e1e"),
   recovery: u("1544367567-0f2fcb009e0b"),
@@ -21,29 +22,47 @@ export const IMAGES = {
   lifestyleAlt: u("1594381898411-846e7d193883"),
 
   gallery: [
-    u("1534438327276-14e5300c3a48", 1200),
-    u("1517836357463-d25dfeac3438", 1200),
-    u("1576678927484-cc907957088c", 1200),
-    u("1540497077202-7c8a3999166f", 1200),
-    u("1583454110551-21f2fa2afe61", 1200),
+    "/images/gallery/dumbell-1.png",
+    "/images/gallery/kadin-fitness-1.png",
+    "/images/gallery/erkek-2.png",
+    "/images/gallery/kadin-fitness-2.png",
+    "/images/gallery/kardiyo-3.png",
   ],
+  groupClasses: u("1517836357463-d25dfeac3438", 1200),
+  services: {
+    mentor: "/images/services/mentor.png",
+    calisthenics: "/images/services/kalistenik.png",
+    womenFitness: "/images/services/bayan-spor-salonu.png",
+    cardio: "/images/services/kardiyo-alani.png",
+    equipment: "/images/services/aletler.jpg",
+    atasehir: "/images/services/atasehir.png",
+  },
+  story: {
+    training: "/images/story/antrenman-alani.jpg",
+    womenMain: "/images/story/kadin-fitness-ana.png",
+    womenBalls: "/images/story/kadin-fitness-toplar.png",
+    womenEntrance: "/images/story/bayan-spor-salonu.png",
+    atasehirCardio: "/images/story/atasehir-kardiyo.jpg",
+    atasehirSalon: "/images/story/atasehir-salon.jpg",
+    atasehirSalon2: "/images/story/atasehir-salon-2.jpg",
+  },
 
   before: u("1581009137042-c552e485697a", 1200),
   after: u("1532384748853-8f54a8f476e2", 1200),
 
-  club: [
-    u("1558611848-73f7eb4001a1", 1400),
-    u("1593079831268-3381b0db4a77", 1400),
-    u("1534258936925-c58bed479fcb", 1400),
-  ],
+  membershipPoster: "/images/services/atasehir.png",
 
-  membershipPoster: u("1517838277536-f5f99be501cd", 2000),
+  club: [
+    "/images/gallery/dumbell-1.png",
+    "/images/gallery/kardiyo-3.png",
+    "/images/gallery/kadin-fitness-2.png",
+  ],
 };
 
 // Optional cinematic background videos. Place your own files in /public/videos
 // (hero.mp4, cta.mp4) for the full effect — the poster image shows as a rich
 // fallback until/unless a video file is present.
 export const VIDEOS = {
-  hero: "/videos/hero.mp4",
-  cta: "/videos/cta.mp4",
+  hero: "/videos/whatsapp-2026-06-19-122905.mp4",
+  cta: "/videos/whatsapp-2026-06-19-122905.mp4",
 };
