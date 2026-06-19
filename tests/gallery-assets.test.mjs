@@ -32,6 +32,26 @@ test("gallery uses the approved Turkish labels in postfix order", () => {
   }
 });
 
+test("gallery requests crisp responsive images for the expanded card", () => {
+  const gallerySource = readFileSync("components/Gallery.tsx", "utf8");
+
+  assert.doesNotMatch(
+    gallerySource,
+    /sizes="[^"]*20vw[^"]*"/,
+    "expanded gallery images should not be requested as tiny 20vw assets",
+  );
+  assert.match(
+    gallerySource,
+    /sizes="[^"]*50vw[^"]*"/,
+    "gallery images should allow a large desktop candidate for the active card",
+  );
+  assert.match(
+    gallerySource,
+    /quality=\{9[0-9]\}/,
+    "gallery images should use a high image optimizer quality",
+  );
+});
+
 test("WhatsApp background video is available to the site", () => {
   assert.equal(existsSync("public/videos/whatsapp-2026-06-19-122905.mp4"), true);
 
