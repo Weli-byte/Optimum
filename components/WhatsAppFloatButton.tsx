@@ -8,12 +8,12 @@ export default function WhatsAppFloatButton() {
       rel="noopener noreferrer"
       aria-label="WhatsApp ile iletişime geç"
       data-cursor="hover"
-      style={{ bottom: "40px", right: "40px" }}
-      className="fixed z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-black/30 transition-transform duration-300 ease-luxe hover:scale-110 hover:shadow-xl"
+      style={{ bottom: "56px", right: "56px" }}
+      className="fixed z-50 flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-black/30 transition-transform duration-300 ease-luxe hover:scale-110 hover:shadow-xl"
     >
       <svg
         viewBox="0 0 24 24"
-        className="h-7 w-7"
+        className="h-9 w-9"
         fill="#fff"
         aria-hidden="true"
       >

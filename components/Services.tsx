@@ -114,10 +114,6 @@ export default function Services() {
               Optimum'da Neler Var?
             </h2>
           </div>
-          <p className="max-w-sm text-white/55">
-            Elazığ'da Optimum Fitness Club; antrenman, mentörlük ve ekipman
-            çeşitliliğini aynı çatı altında toplar.
-          </p>
         </div>
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

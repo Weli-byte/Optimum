@@ -28,10 +28,6 @@ export default function Gallery() {
         >
           Galeri
         </motion.h2>
-        <p className="mt-4 max-w-md text-white/55">
-          Dambıldan kardiyoya, kadın ve erkek salonlarına uzanan
-          OPTIMUM deneyimi.
-        </p>
       </div>
 
       <div

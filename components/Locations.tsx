@@ -74,7 +74,7 @@ export default function Locations() {
                   title={`${branch.name} Harita`}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="pointer-events-none h-full w-full grayscale transition-all duration-500 ease-luxe group-hover:grayscale-0"
+                  className="pointer-events-none h-full w-full"
                 />
                 <div className="absolute inset-0 bg-ink/10 transition-opacity duration-500 group-hover:opacity-0" />
               </a>
