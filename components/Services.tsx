@@ -82,7 +82,7 @@ function Card({
             src={service.image}
             alt={service.title}
             fill
-            quality={100}
+            quality={85}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="h-full w-full object-cover brightness-75 transition-all duration-700 ease-luxe group-hover:scale-110 group-hover:brightness-100"
           />

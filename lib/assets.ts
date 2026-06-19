@@ -63,6 +63,6 @@ export const IMAGES = {
 // (hero.mp4, cta.mp4) for the full effect — the poster image shows as a rich
 // fallback until/unless a video file is present.
 export const VIDEOS = {
-  hero: "/videos/whatsapp-2026-06-19-122905.mp4",
-  cta: "/videos/whatsapp-2026-06-19-122905.mp4",
+  hero: "/videos/hero.mp4",
+  cta: "/videos/hero.mp4",
 };

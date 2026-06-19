@@ -43,9 +43,42 @@ export default function Hero() {
     const reduceMotion = Boolean(shouldReduceMotion);
     setReduceMotionActive(reduceMotion);
 
-    if (!reduceMotion || !videoRef.current) return;
+    const section = ref.current;
+    const video = videoRef.current;
+    if (!section || !video) return;
 
-    videoRef.current.pause();
+    let isHeroVisible = true;
+    const syncVideoPlayback = () => {
+      if (
+        reduceMotion ||
+        document.visibilityState === "hidden" ||
+        !isHeroVisible
+      ) {
+        video.pause();
+        return;
+      }
+
+      void video.play().catch(() => {
+        // Autoplay can be blocked by browser policy; the poster remains visible.
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isHeroVisible = entry.isIntersecting;
+        syncVideoPlayback();
+      },
+      { threshold: 0.05 },
+    );
+
+    observer.observe(section);
+    document.addEventListener("visibilitychange", syncVideoPlayback);
+    syncVideoPlayback();
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", syncVideoPlayback);
+    };
   }, [shouldReduceMotion]);
 
   return (
@@ -66,6 +99,7 @@ export default function Hero() {
           muted
           loop
           playsInline
+          preload="metadata"
           poster={IMAGES.heroPoster}
         >
           <source src={VIDEOS.hero} type="video/mp4" />
@@ -86,27 +120,26 @@ export default function Hero() {
       >
         <motion.div
           variants={container}
-          initial={reduceMotionActive ? "show" : "hidden"}
+          initial={false}
           animate="show"
         >
-          <motion.div
-            variants={rise}
-            className="mb-6 flex items-center gap-4 text-xs uppercase tracking-[0.4em] text-gold"
-          >
-            <span className="h-px w-12 bg-gold" />
-            Optimum Fitness Club · Elazığ 1982
-          </motion.div>
-
           <motion.h1
             variants={rise}
-            className="max-w-5xl font-display text-[15vw] leading-[0.85] tracking-tight text-white sm:text-[12vw] lg:text-[9.5vw]"
+            className="font-display text-[13vw] leading-[0.85] tracking-tight text-white sm:text-[10vw] lg:text-[8vw]"
           >
-            GÜCÜNÜ
+            OPTIMUM
             <br />
             <span className="text-gradient-gold animate-shimmer">
-              KEŞFET
+              FITNESS CLUB
             </span>
           </motion.h1>
+
+          <motion.p
+            variants={rise}
+            className="mt-3 font-display text-[3.5vw] font-light tracking-[0.3em] text-white/60 sm:text-[2.5vw] lg:text-[1.6vw]"
+          >
+            ELAZIĞ · 1982
+          </motion.p>
 
           <motion.p
             variants={rise}

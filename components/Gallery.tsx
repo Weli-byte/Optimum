@@ -57,7 +57,7 @@ export default function Gallery() {
                 alt={LABELS[i]}
                 fill
                 sizes="(max-width: 768px) 90vw, (max-width: 1280px) 50vw, 45vw"
-                quality={95}
+                quality={85}
                 className="absolute inset-0 h-full w-full object-cover transition-all duration-[600ms] ease-luxe"
                 style={{
                   transform: isActive ? "scale(1.05)" : "scale(1)",
