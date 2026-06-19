@@ -6,6 +6,7 @@ import CursorGlow from "@/components/CursorGlow";
 import ScrollProgress from "@/components/ScrollProgress";
 import Navbar from "@/components/Navbar";
 import MobileContactBar from "@/components/MobileContactBar";
+import WhatsAppFloatButton from "@/components/WhatsAppFloatButton";
 
 const display = Bebas_Neue({
   weight: "400",
@@ -56,6 +57,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <MobileContactBar />
+        <WhatsAppFloatButton />
       </body>
     </html>
   );

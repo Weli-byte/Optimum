@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import ScrollStory from "@/components/ScrollStory";
 import Gallery from "@/components/Gallery";
 import MarqueeType from "@/components/MarqueeType";
+import Pricing from "@/components/Pricing";
 import Services from "@/components/Services";
 import Stats from "@/components/Stats";
 import MembershipCTA from "@/components/MembershipCTA";
@@ -16,6 +17,7 @@ export default function Home() {
       <Gallery />
       <ScrollStory />
       <MarqueeType />
+      <Pricing />
       <MembershipCTA />
       <Footer />
     </main>

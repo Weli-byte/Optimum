@@ -99,6 +99,7 @@ function StoryMedia({
               alt={`${chapter.title} ${imageIndex + 1}`}
               fill
               loading="eager"
+              quality={100}
               sizes={
                 isSingle
                   ? "(max-width: 1024px) 100vw, 50vw"
